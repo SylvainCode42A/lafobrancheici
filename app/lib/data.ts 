@@ -1,0 +1,18 @@
+export const choiceData = {
+  entreprise: {
+    title: 'Entreprise',
+    text: 'Gérez tous vos liens et analytics en interne pour votre équipe. Tout est centralisé et sécurisé.',
+    preview: [
+      '/assets/preview1.png',
+      '/assets/preview2.png'
+    ]
+  },
+  public: {
+    title: 'Public',
+    text: 'Créez un Link in Bio simple et efficace pour votre audience. Partagez facilement vos contenus.',
+    preview: [
+      '/assets/preview1.png',
+      '/assets/preview2.png'
+    ]
+  }
+}

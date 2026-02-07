@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-brand: #482eb3;
+  --color-brand-hover: #5930cc;
+  --radius-4xl: 32px;
+  --radius-5xl: 45px;
+
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+  }
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(1000%); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.2; }
+  }
+
+  --animate-shimmer: shimmer 2s infinite;
+  --animate-pulse-slow: pulse-slow 6s ease-in-out infinite;
+  --animate-scan: scan 4s linear infinite;
+}
+
+/* Force le noir absolu même au scroll extrême */
+html, body {
+  background-color: #000000 !important;
+  color: white;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none; /* Empêche le rebond blanc sur Mac/iOS */
+}
+
+@utility bg-dots-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@utility purple-bg-spot {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(72, 46, 179, 0.6) 0%, transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn-cta {
+  @apply inline-flex items-center justify-center h-12 px-8 text-[11px] font-black 
+         uppercase tracking-widest rounded-xl text-white bg-[--color-brand] 
+         relative overflow-hidden transition-all duration-500 
+         hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(72,46,179,0.4)]
+         hover:bg-[--color-brand-hover] active:scale-95;
+}
+
+.glass-card {
+  @apply bg-white/2 border border-white/5 rounded-4xl backdrop-blur-sm
+         transition-all duration-500 hover:border-white/15 hover:bg-white/5;
+}
